@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { dummyCourses } from "../assets/assets";
 import { Navigate, useNavigate } from "react-router-dom";
-import {humanizeDuration} from 'humanize-duration'
+import humanizeDuration from 'humanize-duration'
 // eslint-disable-next-line react-refresh/only-export-components
 export const AppContext = createContext()
    
@@ -11,13 +11,15 @@ export const AppContextProvider = ( props ) => {
 
     const [allCourses, setAllCourse] = useState([])
     const [isEducator, setIsEducator] = useState(true)
+    const [enrolledCourses, setEnrolledCourses] = useState([])
+
 
     // Fetch All Course 
     const fetchAllCourse = async () => {
         setAllCourse(dummyCourses)
     }
     
-    // Thêm sau các hàm khác của anh trong AppContext.jsx
+ 
 const fetchCourseData = (courseId) => {
     return allCourses.find(course => course._id === courseId) || null;
 }
@@ -49,13 +51,34 @@ const calculateRating = (course)=>{
         ))
         return humanizeDuration(time * 60 * 1000, {units : ['h','m']} ) 
       }
+
+      // function tp calculate no of lecture in the course
+       const calculateNoOfLectures = (course) => {
+          let totalLectures = 0 
+          course.courseContent.forEach((chapter)=> {
+             if(Array.isArray(chapter.chapterContent)){
+                totalLectures += chapter.chapterContent.length;
+             }
+          });
+           
+            return totalLectures;
+        
+       }
    
+       // Fetch user enrolled courses
+       const fetchUserEnrolledCourses = async ()=>{
+          setEnrolledCourses(dummyCourses)
+       }
+
+
      useEffect(()=>{
         fetchAllCourse() 
+        fetchUserEnrolledCourses()
     },[])
 
     const value = {
-        currency, allCourses, navigate, calculateRating   , isEducator , setIsEducator, fetchCourseData
+        currency, allCourses, navigate, calculateRating   , isEducator , setIsEducator, fetchCourseData, calculateNoOfLectures, calculateCourseDuration,calculateChapterTime, 
+        fetchUserEnrolledCourses, enrolledCourses,
     };
     return (
         <AppContext.Provider value={value}>

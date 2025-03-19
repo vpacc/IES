@@ -21,20 +21,20 @@ const Navbar = () => {
 
         <div className='flex items-center gap-5'>
          { user && <>
-          <button onClick={()=> {navigate('/educator')}}>{isEducator ? 'Become Educator' : 'Educator Dashboard'}</button>
-          | <Link to='/my-enrollments' >My Enrollment</Link>
+          <button onClick={()=> {navigate('/educator')}}>{isEducator ? 'Trở thành Giảng Viên' : 'Educator Dashboard'}</button>
+          | <Link to='/my-enrollments' >Khóa học của tôi</Link>
           </>
           }
         </div>
          { user ? <UserButton/> : 
-          <button onClick={()=> openSignIn()} className='bg-blue-600 text-white px-5 py-2 rounded-full'>Create Account</button>}
+          <button onClick={()=> openSignIn()} className='bg-blue-600 text-white px-5 py-2 rounded-full'>Tạo Tài Khoản</button>}
       </div>
        { /*For Phone Screens*/}
       <div className='md:hidden flex items-center gap-2 sm:gap-5 text-gray-500'>
            <div className='flex items-center gap-1 sm:gap-2 max-sm:test-xs'>
            { user && <>
-            <button onClick={()=> {navigate('/educator')}}>{isEducator ? 'Become Educator' : 'Educator Dashboard'}</button>
-            | <Link to='/my-enrollments' >My Enrollment</Link>
+            <button onClick={()=> {navigate('/educator')}}>{isEducator ? 'Trở thành Giảng Viên' : 'Educator Dashboard'}</button>
+            | <Link to='/my-enrollments' >Khóa học của tôi</Link>
           </>
           }
            </div>

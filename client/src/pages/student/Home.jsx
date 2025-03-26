@@ -7,6 +7,7 @@ import Footer from '../../components/student/Footer'
 const Home = () => {
   return (
     <div className='flex flex-col items-center space-y-7 text-center'>
+         {/* <img src="/mnt/data/bg_IES.png" alt="Ảnh IES" className="w-full max-w-6xl aspect-video mt-4 rounded-xl shadow-md" /> */}
      <Hero />
      <CoursesSection />
      <CallToAction />

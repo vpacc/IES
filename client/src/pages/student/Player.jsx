@@ -3,7 +3,9 @@ import { AppContext } from '../../context/AppContext'
 import { useParams } from 'react-router-dom'
 import { assets } from '../../assets/assets'
 import humanizeDuration from 'humanize-duration'
-
+import YouTube from 'react-youtube'
+import Footer from '../../components/student/Footer'
+import Rating from '../../components/student/Rating'
 const Player = () => {
 
   const {enrolledCourses, calculateChapterTime} = useContext(AppContext)
@@ -38,7 +40,7 @@ const Player = () => {
     <div className='p-4 sm:p-10 flex flex-col-reverse md:grid md:grid-cols-2 gap-10 md:px-36'>
       {/* left col */}
      <div className='text-gray-800'>
-     <h2 className='text-lg font-semibold'>Course Structure</h2>
+     <h2 className='text-lg font-semibold'>MÔ TẢ KHÓA HỌC</h2>
 
       <div className='pt-5'>
                          { courseData && courseData.courseContent.map((chapter, index)=> (
@@ -75,13 +77,29 @@ const Player = () => {
                             </div>
                          ))}
                         </div>
+                        <div className='flex items-center gap-2 py-3 mt-10s'>
+                          <h1 className='text-x1 font-bold'>Rate this Course:</h1>
+                          <Rating initialRating={0}/>
+                        </div>
      </div>
 
       {/* right col */}
-      <div>
-       
+      <div className='md:mt-10'>
+        {playerData ? (
+          <div>
+           <YouTube videoId={playerData.lectureUrl.split('/').pop()}  iframeClassName='w-full aspect-video' />
+           <div className='flex justify-between items-center mt-1'>
+            <p>{playerData.chapter}.{playerData.lecture}.{playerData.lectureTitle}</p>
+            <button className='text-blue-600'>{false ? 'Completed' : 'Mark Complete'}</button>
+           </div>
+          </div>
+        )
+        : 
+       <img src={courseData ? courseData.courseThumbnail : ''} alt="" />
+        }
       </div>
     </div>
+    <Footer />
     </>
   )
 }

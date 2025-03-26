@@ -44,6 +44,7 @@ import profile_img3 from './profile_img3.png'
 import lesson_icon from './lesson_icon.svg'
 
 
+
 export const assets = {
     logo,
     search_icon,

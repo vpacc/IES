@@ -3,7 +3,7 @@ import User from "../models/User.js";
 
 
 //Api controller function to manage clerk users with database
-const clerkWebhooks = async (req, res) => {
+export const clerkWebhooks = async (req, res) => {
   try{
      const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET)
 
@@ -45,7 +45,7 @@ const clerkWebhooks = async (req, res) => {
             break;
            }
         default:
-            break
+            break;
      }
      res.status(200).send("Webhook processed successfully")
   } catch(error) {

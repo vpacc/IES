@@ -13,6 +13,7 @@ await connectDB()
 app.use(cors())
 
 //routes
+app.use(express.json()); 
 app.get('/', (req, res)=> res.send("API Working"))
 
 app.post('/clerk',express.json(), clerkWebhooks ) 
@@ -23,4 +24,3 @@ const Port = process.env.PORT || 5000
 app.listen(Port, ()=> {
     console.log(`Server is running on ${Port}`)
 } )
-

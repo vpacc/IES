@@ -80,3 +80,12 @@ export const purchaseCourse = async(req, res) => {
         res.json({ success:false, message: error.message });
     }
 }
+
+//update user course progress 
+export const updateUserCourseProgress = async (req, res) => {
+   try {
+    const useId = req.auth.userId
+   } catch (error) {
+    
+   }
+}

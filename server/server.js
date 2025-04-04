@@ -11,6 +11,7 @@ import userRouter from './routes/userRoutes.js'
 // initialize express
 const app = express()
 
+
 // connect to database
 await connectDB()
 await connectCloudinary()
@@ -21,13 +22,18 @@ app.use(express.json());
 //routes
 
 app.get('/', (req, res)=> res.send("API Working"))
-app.post('/clerk', express.json(), clerkWebhooks ) 
-app.use('/api/educator', express.json(), educatorRouter)
-app.use('/api/course', express.json(), courseRouter)
-app.use('/api/user', express.json(), userRouter)
+app.post('/clerk',  clerkWebhooks ) 
+app.use('/api/educator',  educatorRouter)
+app.use('/api/course',  courseRouter)
+app.use('/api/user',  userRouter)
 app.post('/stripe', express.raw({type: 'application/json'}), stripeWebhooks)
 
-
+app.post('/api/course', (req, res) => {
+    console.log('Received req.body:', req.body);
+    const { CourseData } = req.body;
+    console.log(typeof CourseData, CourseData);
+    // Rest of your code...
+});
 
 // port
 const Port = process.env.PORT || 5000 ;

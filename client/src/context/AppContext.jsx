@@ -3,6 +3,7 @@ import { dummyCourses } from "../assets/assets";
 import { Navigate, useNavigate } from "react-router-dom";
 import humanizeDuration from 'humanize-duration'
 import { useAuth, useUser} from '@clerk/clerk-react'
+import User from "../../../server/models/User";
 // eslint-disable-next-line react-refresh/only-export-components
 export const AppContext = createContext()
    
@@ -87,7 +88,7 @@ const calculateRating = (course)=>{
        if(user){
         logToken()
        }   
-    },[user])
+    }, [user])
 
     const value = {
         currency, allCourses, navigate, calculateRating   , isEducator , setIsEducator, fetchCourseData, calculateNoOfLectures, calculateCourseDuration,calculateChapterTime, 

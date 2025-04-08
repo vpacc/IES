@@ -85,14 +85,6 @@ export const purchaseCourse = async(req, res) => {
 
 //update user course progress 
 export const updateUserCourseProgress = async (req, res) => {
-   try {
-    const useId = req.auth.userId
-   } catch (error) {
-    
-   }
-}
-
-const updateUserCourseProgress = async (req, res) => {
     try {
         const userId = req.auth.userId
         const { courseId, lectureId } = req.body

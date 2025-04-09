@@ -4,7 +4,7 @@ import SearchBar from './SearchBar'
 
 const Hero = () => {
   return (
-    <div className='flex flex-col items-center justify-center w-full md:pt-36 pt-20 px-7 md:px-0 space-y-7
+    <div className='flex flex-col items-center justify-center w-full md:pt-0 pt-20 px-7 md:px-0 space-y-7
      text-center bg-gradient-to-b from-cyan-100/70'>
       <img src="https://duhocies.edu.vn/wp-content/uploads/2021/11/IES.png" 
       alt="" className="w-full h-auto mt-4 rounded-xl shadow-md"
